@@ -25,6 +25,7 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.update') }}">
+                            @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome:</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Digite seu nome" required value="{{ isset($user) ? $user->name : '' }}">

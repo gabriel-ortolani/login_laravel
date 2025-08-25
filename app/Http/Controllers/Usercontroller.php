@@ -62,4 +62,27 @@ class Usercontroller extends Controller
             return back()->withErrors(['email' => 'Email não encontrado.'])->withInput();
         }        
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'senha' => 'nullable|string|min:3'
+        ]);
+
+        $user = User::where('email', $request->input('email'))->first();
+        if($user){
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            if($request->filled('senha')) {
+                $user->password = Hash::make($request->input('senha'));
+            }
+            $user->save();
+
+            return redirect()->route('user.login');
+        }else{
+            return back()->withErrors(['email' => 'Usuário não encontrado.'])->withInput();
+        }
+    }
 }
