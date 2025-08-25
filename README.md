@@ -53,14 +53,6 @@ Este projeto é um sistema de login, cadastro e recuperação de senha para usu�
 
 7. Acesse `http://localhost:8000` no navegador.
 
-## Estrutura das Rotas
-
-- `/` - Tela inicial
-- `/cadastro-user` - Cadastro de usuário
-- `/login-user` - Login de usuário
-- `/verificacao-user` - Recuperação de senha
-- `/home-user` - Área restrita do usuário
-
 ## Observações
 
 - O projeto utiliza Bootstrap 5 para o frontend.
