@@ -67,7 +67,3 @@ Este projeto é um sistema de login, cadastro e recuperação de senha para usu�
 - As senhas são armazenadas de forma segura utilizando hash.
 - O sistema pode ser expandido para incluir autenticação por email, confirmação de cadastro, etc.
 
-## Licença
-
-Este projeto está sob a licença MIT.
-
