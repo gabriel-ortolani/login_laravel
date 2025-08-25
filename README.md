@@ -25,7 +25,7 @@ Este projeto é um sistema de login, cadastro e recuperação de senha para usu�
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/login_laravel.git
+   git clone https://github.com/gabriel-ortolani/login_laravel.git
    cd login_laravel
    ```
 
