@@ -7,47 +7,61 @@
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e3f0ff 0%, #fafcff 100%);
+        }
+        .card {
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        .form-control {
+            border-radius: 1rem;
+        }
+        .btn-custom {
+            border-radius: 2rem;
+            font-size: 1.1rem;
+        }
+        .card-header {
+            border-radius: 1.5rem 1.5rem 0 0 !important;
+        }
+    </style>
 </head>
 <body class="bg-light">
-    <div class="container vh-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-md-6">
-                <div class="card shadow">
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="d-flex align-items-center justify-content-between card-header bg-primary text-white">
+                    <div class="flex-grow-1 text-center">
+                        <h2 class="mb-0"><i class="bi bi-pencil-square"></i> Redefinir informações</h2>
+                    </div>
                     <div>
-                        <div class="d-flex align-items-center justify-content-between card-header bg-primary text-white">
-                            <div class="flex-grow-1 text-center">
-                                <h2 class="mb-0"><i class="bi bi-pencil-square"></i> Redefinir informações</h2>
-                            </div>
-                            <div>
-                                <a href="{{ route('user.login') }}"><i class="bi bi-box-arrow-left" style="color: #dc3545; font-size: 1.7rem;"></i></a>
-                            </div>
+                        <a href="{{ route('user.login') }}"><i class="bi bi-box-arrow-left" style="color: #fff; font-size: 1.7rem;"></i></a>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="{{ route('user.update') }}">
+                        @csrf
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Digite seu nome" required value="{{ isset($user) ? $user->name : '' }}">
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('user.update') }}">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nome:</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Digite seu nome" required value="{{ isset($user) ? $user->name : '' }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email:</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Digite seu email" required value="{{ isset($user) ? $user->email : '' }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Senha:</label>
-                                <input type="password" name="senha" id="password" class="form-control" placeholder="Digite sua senha" required>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Digite seu email" required value="{{ isset($user) ? $user->email : '' }}">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                            <input type="password" name="senha" id="password" class="form-control" placeholder="Digite sua senha" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-custom"><i class="bi bi-save"></i> Salvar Alterações</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
